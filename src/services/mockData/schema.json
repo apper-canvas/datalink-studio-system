@@ -1,0 +1,453 @@
+{
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "name",
+          "dataType": "VARCHAR(255)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "email",
+          "dataType": "VARCHAR(255)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "password_hash",
+          "dataType": "VARCHAR(255)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "created_at",
+          "dataType": "TIMESTAMP",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "updated_at",
+          "dataType": "TIMESTAMP",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "status",
+          "dataType": "VARCHAR(50)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "profile_image",
+          "dataType": "VARCHAR(500)",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 1250
+    },
+    {
+      "name": "products",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "name",
+          "dataType": "VARCHAR(255)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "description",
+          "dataType": "TEXT",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "price",
+          "dataType": "DECIMAL(10,2)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "category_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": true
+        },
+        {
+          "name": "stock_quantity",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "sku",
+          "dataType": "VARCHAR(100)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "is_active",
+          "dataType": "BOOLEAN",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "created_at",
+          "dataType": "TIMESTAMP",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 850
+    },
+    {
+      "name": "categories",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "name",
+          "dataType": "VARCHAR(255)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "description",
+          "dataType": "TEXT",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "parent_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": true
+        },
+        {
+          "name": "sort_order",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "is_active",
+          "dataType": "BOOLEAN",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 45
+    },
+    {
+      "name": "orders",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "user_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": true
+        },
+        {
+          "name": "order_number",
+          "dataType": "VARCHAR(50)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "total_amount",
+          "dataType": "DECIMAL(10,2)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "status",
+          "dataType": "VARCHAR(50)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "order_date",
+          "dataType": "TIMESTAMP",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "shipped_date",
+          "dataType": "TIMESTAMP",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "billing_address",
+          "dataType": "JSON",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "shipping_address",
+          "dataType": "JSON",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 3420
+    },
+    {
+      "name": "order_items",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "order_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": true
+        },
+        {
+          "name": "product_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": true
+        },
+        {
+          "name": "quantity",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "unit_price",
+          "dataType": "DECIMAL(10,2)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "total_price",
+          "dataType": "DECIMAL(10,2)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 8950
+    },
+    {
+      "name": "customers",
+      "columns": [
+        {
+          "name": "id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": true,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "user_id",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": true
+        },
+        {
+          "name": "first_name",
+          "dataType": "VARCHAR(100)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "last_name",
+          "dataType": "VARCHAR(100)",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "phone",
+          "dataType": "VARCHAR(20)",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "date_of_birth",
+          "dataType": "DATE",
+          "isPrimaryKey": false,
+          "nullable": true,
+          "isForeignKey": false
+        },
+        {
+          "name": "loyalty_points",
+          "dataType": "INTEGER",
+          "isPrimaryKey": false,
+          "nullable": false,
+          "isForeignKey": false
+        }
+      ],
+      "rowCount": 1250
+    }
+  ],
+  "views": [
+    {
+      "name": "user_order_summary",
+      "columns": [
+        {
+          "name": "user_id",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "user_name",
+          "dataType": "VARCHAR(255)"
+        },
+        {
+          "name": "total_orders",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "total_spent",
+          "dataType": "DECIMAL(10,2)"
+        },
+        {
+          "name": "last_order_date",
+          "dataType": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "product_sales_stats",
+      "columns": [
+        {
+          "name": "product_id",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "product_name",
+          "dataType": "VARCHAR(255)"
+        },
+        {
+          "name": "total_sold",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "revenue",
+          "dataType": "DECIMAL(10,2)"
+        },
+        {
+          "name": "avg_rating",
+          "dataType": "DECIMAL(3,2)"
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "name": "get_user_orders",
+      "parameters": [
+        {
+          "name": "user_id",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "start_date",
+          "dataType": "DATE"
+        },
+        {
+          "name": "end_date",
+          "dataType": "DATE"
+        }
+      ]
+    },
+    {
+      "name": "update_product_stock",
+      "parameters": [
+        {
+          "name": "product_id",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "quantity_change",
+          "dataType": "INTEGER"
+        }
+      ]
+    },
+    {
+      "name": "calculate_loyalty_points",
+      "parameters": [
+        {
+          "name": "customer_id",
+          "dataType": "INTEGER"
+        },
+        {
+          "name": "order_total",
+          "dataType": "DECIMAL(10,2)"
+        }
+      ]
+    }
+  ],
+  "lastRefreshed": "2024-01-15T14:30:00.000Z"
+}

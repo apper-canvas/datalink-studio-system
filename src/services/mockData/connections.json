@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "name": "Main PostgreSQL",
+    "type": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "database": "myapp_production",
+    "username": "postgres",
+    "password": "password123",
+    "isActive": false,
+    "lastUsed": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "Id": 2,
+    "name": "Analytics MySQL",
+    "type": "mysql",
+    "host": "analytics.example.com",
+    "port": 3306,
+    "database": "analytics_db",
+    "username": "analyst",
+    "password": "secure_pass",
+    "isActive": false,
+    "lastUsed": "2024-01-14T16:45:00.000Z"
+  },
+  {
+    "Id": 3,
+    "name": "Local SQLite",
+    "type": "sqlite",
+    "host": "",
+    "port": null,
+    "database": "/home/user/projects/app.db",
+    "username": "",
+    "password": "",
+    "isActive": false,
+    "lastUsed": "2024-01-13T09:15:00.000Z"
+  },
+  {
+    "Id": 4,
+    "name": "Staging PostgreSQL",
+    "type": "postgresql",
+    "host": "staging-db.example.com",
+    "port": 5432,
+    "database": "myapp_staging",
+    "username": "staging_user",
+    "password": "staging_pass",
+    "isActive": false,
+    "lastUsed": null
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "SELECT * FROM users WHERE status = 'active' ORDER BY created_at DESC LIMIT 10;",
+    "executedAt": "2024-01-15T10:30:45.000Z",
+    "executionTime": 142,
+    "rowCount": 8,
+    "error": null
+  },
+  {
+    "Id": 2,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "SELECT COUNT(*) as total_users FROM users;",
+    "executedAt": "2024-01-15T10:25:12.000Z",
+    "executionTime": 85,
+    "rowCount": 1,
+    "error": null
+  },
+  {
+    "Id": 3,
+    "connectionId": 2,
+    "connectionName": "Analytics MySQL",
+    "sql": "SELECT product_name, SUM(quantity) as total_sold FROM order_items oi JOIN products p ON oi.product_id = p.id GROUP BY product_name ORDER BY total_sold DESC;",
+    "executedAt": "2024-01-15T09:45:33.000Z",
+    "executionTime": 245,
+    "rowCount": 15,
+    "error": null
+  },
+  {
+    "Id": 4,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "UPDATE users SET status = 'inactive' WHERE last_login < '2023-01-01';",
+    "executedAt": "2024-01-15T09:30:18.000Z",
+    "executionTime": 156,
+    "rowCount": 23,
+    "error": null
+  },
+  {
+    "Id": 5,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "SELECT * FROM nonexistent_table;",
+    "executedAt": "2024-01-15T09:15:07.000Z",
+    "executionTime": null,
+    "rowCount": 0,
+    "error": "ERROR: relation \"nonexistent_table\" does not exist\nLINE 1: SELECT * FROM nonexistent_table;\n                      ^"
+  },
+  {
+    "Id": 6,
+    "connectionId": 2,
+    "connectionName": "Analytics MySQL",
+    "sql": "SELECT DATE(order_date) as order_day, COUNT(*) as daily_orders, SUM(total_amount) as daily_revenue FROM orders WHERE order_date >= '2024-01-01' GROUP BY DATE(order_date) ORDER BY order_day DESC;",
+    "executedAt": "2024-01-14T16:45:22.000Z",
+    "executionTime": 189,
+    "rowCount": 14,
+    "error": null
+  },
+  {
+    "Id": 7,
+    "connectionId": 3,
+    "connectionName": "Local SQLite",
+    "sql": "SELECT name FROM sqlite_master WHERE type='table';",
+    "executedAt": "2024-01-14T14:20:11.000Z",
+    "executionTime": 12,
+    "rowCount": 5,
+    "error": null
+  },
+  {
+    "Id": 8,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "INSERT INTO users (name, email, status) VALUES ('Test User', 'test@example.com', 'active');",
+    "executedAt": "2024-01-14T11:30:45.000Z",
+    "executionTime": 67,
+    "rowCount": 1,
+    "error": null
+  },
+  {
+    "Id": 9,
+    "connectionId": 2,
+    "connectionName": "Analytics MySQL",
+    "sql": "SELECT u.name, u.email, COUNT(o.id) as order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id, u.name, u.email HAVING order_count > 5 ORDER BY order_count DESC;",
+    "executedAt": "2024-01-14T10:15:33.000Z",
+    "executionTime": 312,
+    "rowCount": 42,
+    "error": null
+  },
+  {
+    "Id": 10,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "DELETE FROM orders WHERE status = 'cancelled' AND order_date < '2023-01-01';",
+    "executedAt": "2024-01-13T15:22:18.000Z",
+    "executionTime": 445,
+    "rowCount": 156,
+    "error": null
+  },
+  {
+    "Id": 11,
+    "connectionId": 1,
+    "connectionName": "Main PostgreSQL",
+    "sql": "SELECT * FROM orders WHERE invalid_column = 'test';",
+    "executedAt": "2024-01-13T14:45:07.000Z",
+    "executionTime": null,
+    "rowCount": 0,
+    "error": "ERROR: column \"invalid_column\" does not exist\nLINE 1: SELECT * FROM orders WHERE invalid_column = 'test';\n                                   ^"
+  },
+  {
+    "Id": 12,
+    "connectionId": 3,
+    "connectionName": "Local SQLite",
+    "sql": "CREATE TABLE test_table (id INTEGER PRIMARY KEY, name TEXT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);",
+    "executedAt": "2024-01-13T09:15:42.000Z",
+    "executionTime": 23,
+    "rowCount": 0,
+    "error": null
+  }
+]

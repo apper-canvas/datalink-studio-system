@@ -1,0 +1,113 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "created_at": "2023-01-15T08:30:00.000Z",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "created_at": "2023-02-20T14:22:00.000Z",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "created_at": "2023-03-10T11:45:00.000Z",
+      "status": "inactive"
+    },
+    {
+      "id": 4,
+      "name": "Alice Williams",
+      "email": "alice.williams@example.com",
+      "created_at": "2023-04-05T16:12:00.000Z",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "name": "Charlie Brown",
+      "email": "charlie.brown@example.com",
+      "created_at": "2023-05-18T09:33:00.000Z",
+      "status": "pending"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop Pro",
+      "price": 1299.99,
+      "category": "Electronics",
+      "stock": 45
+    },
+    {
+      "id": 2,
+      "name": "Wireless Mouse",
+      "price": 29.99,
+      "category": "Electronics",
+      "stock": 150
+    },
+    {
+      "id": 3,
+      "name": "Coffee Mug",
+      "price": 12.50,
+      "category": "Home",
+      "stock": 200
+    },
+    {
+      "id": 4,
+      "name": "Desk Chair",
+      "price": 189.99,
+      "category": "Furniture",
+      "stock": 25
+    },
+    {
+      "id": 5,
+      "name": "Notebook Set",
+      "price": 15.99,
+      "category": "Office",
+      "stock": 80
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "total": 1329.98,
+      "status": "completed",
+      "order_date": "2023-06-01T10:15:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "total": 42.49,
+      "status": "shipped",
+      "order_date": "2023-06-02T14:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "total": 189.99,
+      "status": "processing",
+      "order_date": "2023-06-03T09:45:00.000Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "total": 15.99,
+      "status": "completed",
+      "order_date": "2023-06-04T16:20:00.000Z"
+    },
+    {
+      "id": 5,
+      "user_id": 4,
+      "total": 202.48,
+      "status": "cancelled",
+      "order_date": "2023-06-05T11:10:00.000Z"
+    }
+  ]
+}
