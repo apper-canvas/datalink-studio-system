@@ -7,6 +7,7 @@ import StatusBar from '@/components/molecules/StatusBar'
 import ApperIcon from '@/components/ApperIcon'
 import Button from '@/components/atoms/Button'
 import queryService from '@/services/api/queryService'
+import queryHistoryService from '@/services/api/queryHistoryService'
 
 const QueryEditor = ({ activeConnection, setActiveConnection }) => {
   const [query, setQuery] = useState('')
@@ -32,26 +33,46 @@ const QueryEditor = ({ activeConnection, setActiveConnection }) => {
 
     try {
       const result = await queryService.executeQuery(activeConnection.id, sqlQuery)
-      setResults(result)
-      setLastQuery({
+setResults(result)
+      const queryData = {
         sql: sqlQuery,
         executionTime: result.executionTime,
         rowCount: result.data?.length || 0,
-        executedAt: new Date(),
-        error: null
-      })
+        executedAt: new Date().toISOString(),
+        error: null,
+        connectionId: activeConnection.Id || activeConnection.id,
+        connectionName: activeConnection.name
+      }
+      setLastQuery(queryData)
+      
+      // Save to database
+      try {
+        await queryHistoryService.create(queryData)
+      } catch (historyError) {
+        console.error("Failed to save query history:", historyError)
+      }
       
       toast.success(`Query executed successfully. ${result.data?.length || 0} rows returned.`)
     } catch (err) {
       const errorMessage = err.message || 'Failed to execute query'
       setError(errorMessage)
-      setLastQuery({
+const errorQueryData = {
         sql: sqlQuery,
         executionTime: null,
         rowCount: 0,
-        executedAt: new Date(),
-        error: errorMessage
-      })
+        executedAt: new Date().toISOString(),
+        error: errorMessage,
+        connectionId: activeConnection.Id || activeConnection.id,
+        connectionName: activeConnection.name
+      }
+      setLastQuery(errorQueryData)
+      
+      // Save error to database
+      try {
+        await queryHistoryService.create(errorQueryData)
+      } catch (historyError) {
+        console.error("Failed to save query error history:", historyError)
+      }
       
       toast.error(errorMessage)
     } finally {
